@@ -3,7 +3,6 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flaskext.markdown import Markdown
-
 import config
 
 naming_convention = {
@@ -27,6 +26,7 @@ def create_app():
         migrate.init_app(app, db, render_as_batch=True)
     else:
         migrate.init_app(app, db)
+    from . import models
 
     # 블루프린트
     from .views import main_views, question_views, answer_views, auth_views
